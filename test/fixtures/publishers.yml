@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: publishers
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  origin_country :string(255)
+#  founded_year   :integer
+#  founder        :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_country: MyString
+  founded_year: 1
+  founder: MyString
+
+two:
+  origin_country: MyString
+  founded_year: 1
+  founder: MyString
