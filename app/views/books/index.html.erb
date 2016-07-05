@@ -7,18 +7,20 @@
   <% else %>
     <div class="responsive-fake-table expansible-fake-table">
       <header class="row">
-        <div class="col col-xs-5 col-sm-4 col-md-3"><%=t('activerecord.attributes.book.title')%></div>
-        <div class="col col-xs-5 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.author')%></div>
-        <div class="col hidden-xs col-sm-4 col-md-3"><%=t('activerecord.attributes.book.editorial')%></div>
-        <div class="col hidden-xs hidden-sm col-md-2"><%=t('activerecord.attributes.book.edition')%></div>
+        <div class="col col-xs-2 col-sm-2 col-md-2"><%=t('activerecord.attributes.book.cover')%></div>
+        <div class="col col-xs-4 col-sm-4 col-md-3"><%=t('activerecord.attributes.book.title')%></div>
+        <div class="col col-xs-4 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.author')%></div>
+        <div class="col hidden-xs col-sm-2 col-md-2"><%=t('activerecord.attributes.book.editorial')%></div>
+        <div class="col hidden-xs hidden-sm col-md-1"><%=t('activerecord.attributes.book.edition')%></div>
         <div class="col col-xs-2 col-sm-1 col-md-1"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</div>
       </header>
       <% @books.each do |book|%>
         <section class="row">
-          <div class="col col-xs-5 col-sm-4 col-md-3 toggle"><%=book.title %></div>
-          <div class="col col-xs-5 col-sm-3 col-md-3 toggle"><%=book.author%></div>
-          <div class="col hidden-xs col-sm-4 col-md-3 toggle"><%=book.editorial%></div>
-          <div class="col hidden-xs hidden-sm col-md-2 toggle"><%=book.edition%></div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 toggle"><%=image_tag(book.cover.url(:thumb), class: 'image-responsive img-thumbnail center-block') %></div>
+          <div class="col col-xs-4 col-sm-4 col-md-3 toggle"><%=book.title %></div>
+          <div class="col col-xs-4 col-sm-3 col-md-3 toggle"><%=book.author%></div>
+          <div class="col hidden-xs col-sm-2 col-md-2 toggle"><%=book.editorial%></div>
+          <div class="col hidden-xs hidden-sm col-md-1 toggle"><%=book.edition%></div>
           <div class="col col-xs-2 col-sm-1 col-md-1">
             <%= link_to content_tag('i','', class: 'fa fa-eye'), book, class: 'tooltipable', title: 'Ver' %>
             <%= link_to content_tag('i','', class: 'fa fa-pencil-square-o'), edit_book_path(book), class: 'tooltipable', title: 'Editar' %>
