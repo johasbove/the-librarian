@@ -5,7 +5,6 @@
 #  id                 :integer          not null, primary key
 #  title              :string(255)      not null
 #  author             :string(255)      not null
-#  editorial          :string(255)      not null
 #  original_title     :string(255)
 #  translation        :string(255)
 #  edition            :integer

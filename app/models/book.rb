@@ -5,7 +5,6 @@
 #  id                 :integer          not null, primary key
 #  title              :string(255)      not null
 #  author             :string(255)      not null
-#  editorial          :string(255)      not null
 #  original_title     :string(255)
 #  translation        :string(255)
 #  edition            :integer
@@ -24,7 +23,7 @@
 
 class Book < ActiveRecord::Base
   
-  validates :title, :author, :editorial, :presence => true
+  validates :title, :author, :publisher_id, :presence => true
   validates :edition, :publication_year, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/default_cover.png"
