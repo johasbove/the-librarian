@@ -2,6 +2,8 @@
 <div id="books_show">
   <h1><%= yield :title %></h1>
   <dl class="dl-horizontal">
+    <dt><%=t('activerecord.attributes.book.cover') %></dt>
+    <dd><%=image_tag(@book.cover.url(:thumb), class: 'image-responsive img-thumbnail') || '-' %></dd>
     <dt><%=t('activerecord.attributes.book.title') %></dt>
     <dd><%=@book.title || '-' %></dd>
     <dt><%=t('activerecord.attributes.book.author') %></dt>
