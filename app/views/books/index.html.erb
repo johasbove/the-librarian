@@ -16,10 +16,37 @@
     <div class="responsive-fake-table expansible-fake-table">
       <header class="row">
         <div class="col col-xs-2 col-sm-2 col-md-2"><%=t('activerecord.attributes.book.cover')%></div>
-        <div class="col col-xs-4 col-sm-4 col-md-3"><%=t('activerecord.attributes.book.title')%></div>
+        <div class="col col-xs-4 col-sm-4 col-md-3">
+          <%=t('activerecord.attributes.book.title')%>
+          <%= link_to(books_path(:sort => "title"), method: :get) do %>
+            <% if @direction == "asc" %>
+              <i class="fa fa-sort-down" aria-hidden="true"></i>
+            <% else %>
+              <i class="fa fa-sort-asc" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
         <div class="col col-xs-4 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.authors.name')%></div>
-        <div class="col hidden-xs col-sm-2 col-md-2"><%=t('activerecord.attributes.book.publisher.name')%></div>
-        <div class="col hidden-xs hidden-sm col-md-1"><%=t('activerecord.attributes.book.edition')%></div>
+        <div class="col hidden-xs col-sm-2 col-md-2">
+          <%=t('activerecord.attributes.book.publisher.name')%>
+          <%= link_to(books_path(:sort => "publisher_name"), method: :get) do %>
+            <% if @direction == "asc" %>
+              <i class="fa fa-sort-down" aria-hidden="true"></i>
+            <% else %>
+              <i class="fa fa-sort-asc" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col hidden-xs hidden-sm col-md-1">
+          <%=t('activerecord.attributes.book.edition')%>
+          <%= link_to(books_path(:sort => "edition"), method: :get) do %>
+            <% if @direction == "asc" %>
+              <i class="fa fa-sort-down" aria-hidden="true"></i>
+            <% else %>
+              <i class="fa fa-sort-asc" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
         <div class="col col-xs-2 col-sm-1 col-md-1"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</div>
       </header>
       <% @books.each do |book|%>
