@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :books
   resources :publishers
+  resources :authors
 
   get 'home/index'
   root to: 'home#index'
