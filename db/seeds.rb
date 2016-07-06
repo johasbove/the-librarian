@@ -58,37 +58,37 @@ unless Book.exists?
   Author.create([
     {
       name: 'Orson Scott Card',
-      nationalty: "American",
+      nationality: "American",
       born: "24/08/1951"
     },
     {
       name: 'Brandon Sanderson',
-      nationalty: "American",
+      nationality: "American",
       born: "19/12/1975"
     },
     {
       name: 'Rick Yancey',
-      nationalty: "American",
+      nationality: "American",
       born: "04/11/1962"
     },
     {
       name: 'Pawan Vora',
-      nationalty: "",
+      nationality: "",
       born: ""
     },
     {
       name: 'Jason Beaird',
-      nationalty: "American",
+      nationality: "American",
       born: ""
     },
     {
       name: 'Jennifer Niederst Robbins',
-      nationalty: "",
+      nationality: "",
       born: ""
     },
     {
       name: 'Steve Krug',
-      nationalty: "",
+      nationality: "",
       born: ""
     }
   ])
