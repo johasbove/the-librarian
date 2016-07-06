@@ -55,10 +55,47 @@ unless Book.exists?
       founder: 'Ted Nace, Michael Gardner'
     }
   ])
+  Author.create([
+    {
+      name: 'Orson Scott Card',
+      nationalty: "American",
+      born: "24/08/1951"
+    },
+    {
+      name: 'Brandon Sanderson',
+      nationalty: "American",
+      born: "19/12/1975"
+    },
+    {
+      name: 'Rick Yancey',
+      nationalty: "American",
+      born: "04/11/1962"
+    },
+    {
+      name: 'Pawan Vora',
+      nationalty: "",
+      born: ""
+    },
+    {
+      name: 'Jason Beaird',
+      nationalty: "American",
+      born: ""
+    },
+    {
+      name: 'Jennifer Niederst Robbins',
+      nationalty: "",
+      born: ""
+    },
+    {
+      name: 'Steve Krug',
+      nationalty: "",
+      born: ""
+    }
+  ])
+
   [
     {
       title: 'La sombra de Ender',
-      author: 'Orson Scott Card',
       original_title: "Ender's Shadow",
       translation: 'Rafael Marín',
       edition: 1,
@@ -70,7 +107,6 @@ unless Book.exists?
     },
     {
       title: 'La sombra del Hegemón',
-      author: 'Orson Scott Card',
       original_title: 'Hegemon\'s Shadow',
       translation: 'Rafael Marín',
       edition: 1,
@@ -82,7 +118,6 @@ unless Book.exists?
     },
     {
       title: 'El imperio final',
-      author: 'Brandon Sanderson',
       original_title: 'Mistborn',
       translation: 'Rafael Marín Trechera',
       edition: 2,
@@ -94,7 +129,6 @@ unless Book.exists?
     },
     {
       title: 'El pozo de la ascensión',
-      author: 'Brandon Sanderson',
       original_title: 'The Well of Ascension: Book Two of Mistborn',
       translation: 'Rafael Marín Trechera',
       edition: 3,
@@ -109,9 +143,15 @@ unless Book.exists?
     b.save
   end
 
+  author = Author.find_by(name: 'Orson Scott Card')
+  author.books << Book.find_by(title:'La sombra de Ender')
+  author.books << Book.find_by(title:'La sombra del Hegemón')
+  author = Author.find_by(name: 'Brandon Sanderson')
+  author.books << Book.find_by(title:'El imperio final')
+  author.books << Book.find_by(title:'El pozo de la ascensión')
+
   book = Publisher.find_by(name: "RBA").books.build({
     title: 'La quinta ola',
-    author: 'Rick Yancey',
     original_title: 'The 5th Wave',
     translation: 'Pilar Ramírez Tello',
     edition: 1,
@@ -122,9 +162,11 @@ unless Book.exists?
     created_at: rtime(now,init_time)
   })
   book.save
+  author = Author.find_by(name: 'Rick Yancey')
+  author.books << Book.find_by(title:'La quinta ola')
+
   book = Publisher.find_by(name: "Morgan Kaufmann Publishers").books.build({
     title: 'Web Application Design Patterns',
-    author: 'Pawan Vora',
     original_title: nil,
     translation: nil,
     edition: 1,
@@ -135,9 +177,11 @@ unless Book.exists?
     created_at: rtime(now,Date.parse('2009-06-01'))
   })
   book.save
+  author = Author.find_by(name: 'Pawan Vora')
+  author.books << Book.find_by(title:'Web Application Design Patterns')
+
   book = Publisher.find_by(name: "SitePoint").books.build({
     title: 'The principles of Beautiful Web Design',
-    author: 'Jason Beaird',
     original_title: nil,
     translation: nil,
     edition: 2,
@@ -148,10 +192,11 @@ unless Book.exists?
     created_at: rtime(now,init_time)
   })
   book.save
+  author = Author.find_by(name: 'Jason Beaird')
+  author.books << Book.find_by(title:'The principles of Beautiful Web Design')
 
   book = Publisher.find_by(name: "O\'Reilly").books.build({
     title: 'Learning Web Design',
-    author: 'Jennifer Niederst Robbins',
     original_title: nil,
     translation: nil,
     edition: 3,
@@ -162,10 +207,11 @@ unless Book.exists?
     created_at: rtime(now,init_time)
   })
   book.save
+  author = Author.find_by(name: 'Jennifer Niederst Robbins')
+  author.books << Book.find_by(title:'Learning Web Design')
 
   book = Publisher.find_by(name: "New Riders Publishing").books.build({
     title: "Don't Make Me Think!",
-    author: 'Steve Krug',
     original_title: nil,
     translation: nil,
     edition: 2,
@@ -176,4 +222,6 @@ unless Book.exists?
     created_at: rtime(now,init_time)
   })
   book.save
+  author = Author.find_by(name: 'Steve Krug')
+  author.books << Book.find_by(title:"Don't Make Me Think!")  
 end
