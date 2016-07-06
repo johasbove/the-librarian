@@ -20,9 +20,9 @@
           <%=t('activerecord.attributes.book.title')%>
           <%= link_to(books_path(:sort => "title"), method: :get) do %>
             <% if @direction == "asc" %>
-              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
             <% else %>
-              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
             <% end %>
           <% end %>
         </div>
@@ -31,9 +31,9 @@
           <%=t('activerecord.attributes.book.publisher.name')%>
           <%= link_to(books_path(:sort => "publisher_name"), method: :get) do %>
             <% if @direction == "asc" %>
-              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
             <% else %>
-              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
             <% end %>
           <% end %>
         </div>
@@ -41,9 +41,9 @@
           <%=t('activerecord.attributes.book.edition')%>
           <%= link_to(books_path(:sort => "edition"), method: :get) do %>
             <% if @direction == "asc" %>
-              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
             <% else %>
-              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
             <% end %>
           <% end %>
         </div>
