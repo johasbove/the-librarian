@@ -27,6 +27,10 @@
       <% end %>
     </div>
   <% end %>
-
-  <%= link_to 'Agregar autor', new_author_path, class: 'btn btn-primary' %>
+  <div>
+    <%= paginate @authors, :window => 2 %>
+  </div>
+  <div>
+    <%= link_to 'Agregar autor', new_author_path, class: 'btn btn-primary' %>
+  </div>
 </div>

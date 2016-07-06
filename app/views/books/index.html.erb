@@ -61,8 +61,11 @@
           </div>
         </section>
       <% end %>
+      <div>
+        <%= paginate @books, :window => 2 %>
+      </div>
+      <%= link_to 'Agregar libro', new_book_path, class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <%= link_to 'Agregar libro', new_book_path, class: 'btn btn-primary' %>
 </div>

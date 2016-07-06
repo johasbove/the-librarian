@@ -5,9 +5,9 @@ class BooksController < ApplicationController
 
   def index
     if params[:search]
-      @books = Book.search(params[:search])
+      @books = Book.search(params[:search]).page(params[:page]).per(7)
     else
-      @books = Book.order("created_at").last(10)
+      @books = Book.order("created_at").page(params[:page]).per(7)
     end
     respond_with(@books)
   end

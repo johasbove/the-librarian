@@ -29,7 +29,11 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Manejo de imágenes
 gem "paperclip"
+
+# Paginación
+gem 'kaminari'
 
 # otras gemas
 #gem 'simple_form'
