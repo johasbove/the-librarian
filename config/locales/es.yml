@@ -6,13 +6,13 @@ es:
       book: Libro
       user: Usuario
       publisher: Editorial
+      author: Autor
     attributes:
       user:
         email: Correo electrónico
         password: Contraseña
       book:
         title: Título
-        author: Autor
         publisher_id: Editorial
         original_title: Título original
         translation: Traducción
@@ -22,11 +22,19 @@ es:
         publication_year: Año de publicación
         isbn: ISBN
         cover: Portada
+        authors:
+          name: Autores
+        publisher:
+          name: Editorial
       publisher:
         name: Nombre
         origin_country: País de Origen
         founded_year: Año
         founder: Fundador
+      author:
+        name: Nombre
+        nationality: Nacionalidad
+        born: Fecha de Nacimiento
   
   date:
     abbr_day_names:

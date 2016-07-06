@@ -1,0 +1,17 @@
+<% content_for :title, "Ver autor: #{@author.name.titleize}" %>
+<div>
+  <h1><%= yield :title %></h1>
+  <dl class="dl-horizontal">
+    <dt><%=t('activerecord.attributes.author.name') %></dt>
+    <dd><%=@author.name || '-' %></dd>
+    <dt><%=t('activerecord.attributes.author.nationality') %></dt>
+    <dd><%=@author.nationality || '-' %></dd>
+    <dt><%=t('activerecord.attributes.author.born') %></dt>
+    <dd><%=if @author.born.present? then l(@author.born) else '-' end %></dd>
+  </dl>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-11">      
+      <%= link_to 'Editar', edit_author_path(@author), class: 'btn btn-primary' %>
+      <%= link_to 'Volver', authors_path, class: 'btn btn-default' %>
+    </div>
+  </div>

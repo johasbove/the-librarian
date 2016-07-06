@@ -16,9 +16,9 @@
       <% @publishers.each do |publisher|%>
         <section class="row">
           <div class="col col-xs-4 col-sm-4 col-md-4 toggle"><%=publisher.name %></div>
-          <div class="col hidden-xs col-sm-1 col-md-1 toggle"><%=publisher.founded_year%></div>
-          <div class="col col-xs-4 col-sm-2 col-md-4 toggle"><%=publisher.founder%></div>
-          <div class="col col-xs-2 col-sm-4 col-md-2 toggle"><%=publisher.origin_country%></div>
+          <div class="col hidden-xs col-sm-1 col-md-1 toggle"><%=publisher.founded_year || '-'%></div>
+          <div class="col col-xs-4 col-sm-2 col-md-4 toggle"><%=publisher.founder || '-'%></div>
+          <div class="col col-xs-2 col-sm-4 col-md-2 toggle"><%=publisher.origin_country || '-'%></div>
           <div class="col col-xs-2 col-sm-1 col-md-1">
             <%= link_to content_tag('i','', class: 'fa fa-eye'), publisher, class: 'tooltipable', title: 'Ver' %>
             <%= link_to content_tag('i','', class: 'fa fa-pencil-square-o'), edit_publisher_path(publisher), class: 'tooltipable', title: 'Editar' %>

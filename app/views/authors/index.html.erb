@@ -1,0 +1,32 @@
+<% content_for :title, "Lista de autores" %>
+<div>
+  <h1><%= yield :title %></h1>
+
+  <% if @authors.blank? %>
+    <div class="alert alert-warning">No hay autores que mostrar</div>
+  <% else %>
+    <div class="responsive-fake-table expansible-fake-table">
+      <header class="row">
+        <div class="col col-xs-4 col-sm-4 col-md-4"><%=t('activerecord.attributes.author.name')%></div>
+        <div class="col col-xs-2 col-sm-2 col-md-2"><%=t('activerecord.attributes.author.nationality')%></div>
+        <div class="col col-xs-4 col-sm-2 col-md-4"><%=t('activerecord.attributes.author.born')%></div>
+        <div class="col col-xs-2 col-sm-2 col-md-2"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</div>
+      </header>
+      <% @authors.each do |author|%>
+        <section class="row">
+          <div class="col col-xs-4 col-sm-4 col-md-4 toggle"><%=author.name %></div>
+          <div class="col hidden-xs col-sm-1 col-md-1 toggle"><%=author.nationality || '-'%></div>
+          <div class="col col-xs-4 col-sm-2 col-md-4 toggle"><%=author.born.present? ? l(author.born) : '-' %></div>
+          <div class="col col-xs-2 col-sm-1 col-md-1">
+            <%= link_to content_tag('i','', class: 'fa fa-eye'), author, class: 'tooltipable', title: 'Ver' %>
+            <%= link_to content_tag('i','', class: 'fa fa-pencil-square-o'), edit_author_path(author), class: 'tooltipable', title: 'Editar' %>
+            <%= link_to content_tag('i','', class: 'fa fa-times'), author, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tooltipable', title: 'Eliminar' %>
+        
+          </div>
+        </section>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Agregar autor', new_author_path, class: 'btn btn-primary' %>
+</div>
