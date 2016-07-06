@@ -30,4 +30,5 @@ class Book < ActiveRecord::Base
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :publisher
+  has_and_belongs_to_many :authors
 end
