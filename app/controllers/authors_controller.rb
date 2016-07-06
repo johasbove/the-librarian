@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   def index
-    @authors = Author.order("created_at").last(10)
+    @authors = Author.order("created_at").page(params[:page]).per(12)
     respond_with(@authors)
   end
 

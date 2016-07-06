@@ -164,7 +164,7 @@ unless Book.exists?
   book.save
 
   book = Publisher.find_by(name: "New Riders Publishing").books.build({
-    title: 'Don’t Make Me Think!',
+    title: "Don't Make Me Think!",
     author: 'Steve Krug',
     original_title: nil,
     translation: nil,
