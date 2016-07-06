@@ -27,8 +27,26 @@
           <% end %>
         </div>
         <div class="col col-xs-4 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.authors.name')%></div>
-        <div class="col hidden-xs col-sm-2 col-md-2"><%=t('activerecord.attributes.book.publisher.name')%></div>
-        <div class="col hidden-xs hidden-sm col-md-1"><%=t('activerecord.attributes.book.edition')%></div>
+        <div class="col hidden-xs col-sm-2 col-md-2">
+          <%=t('activerecord.attributes.book.publisher.name')%>
+          <%= link_to(books_path(:sort => "publisher_name"), method: :get) do %>
+            <% if @direction == "asc" %>
+              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col hidden-xs hidden-sm col-md-1">
+          <%=t('activerecord.attributes.book.edition')%>
+          <%= link_to(books_path(:sort => "edition"), method: :get) do %>
+            <% if @direction == "asc" %>
+              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+        </div>
         <div class="col col-xs-2 col-sm-1 col-md-1"><span class="hidden-sm hidden-xs">Opciones</span>&nbsp;</div>
       </header>
       <% @books.each do |book|%>
