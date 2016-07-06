@@ -21,8 +21,8 @@
       <%= f.text_field :author, class: "form-control" %>
     </div>
     <div class="field form-group">
-      <%= f.label :editorial %><br>
-      <%= f.text_field :editorial, class: "form-control" %>
+      <%= f.label :publisher_id %><br>
+      <%= f.collection_select(:publisher_id, Publisher.all, :id, :name) %>
     </div>
     <div class="field form-group">
       <%= f.label :original_title %><br>

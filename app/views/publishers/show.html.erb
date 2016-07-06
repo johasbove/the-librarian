@@ -1,0 +1,20 @@
+<% content_for :title, "Ver editorial: #{@publisher.name}" %>
+<div>
+  <h1><%= yield :title %></h1>
+  <dl class="dl-horizontal">
+    <dt><%=t('activerecord.attributes.publisher.name') %></dt>
+    <dd><%=@publisher.name || '-' %></dd>
+    <dt><%=t('activerecord.attributes.publisher.origin_country') %></dt>
+    <dd><%=@publisher.origin_country || '-' %></dd>
+    <dt><%=t('activerecord.attributes.publisher.founded_year') %></dt>
+    <dd><%=@publisher.founded_year || '-' %></dd>
+    <dt><%=t('activerecord.attributes.publisher.founder') %></dt>
+    <dd><%=@publisher.founder || '-' %></dd>
+  </dl>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-11">      
+      <%= link_to 'Editar', edit_publisher_path(@publisher), class: 'btn btn-primary' %>
+      <%= link_to 'Volver', publishers_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+
