@@ -16,7 +16,16 @@
     <div class="responsive-fake-table expansible-fake-table">
       <header class="row">
         <div class="col col-xs-2 col-sm-2 col-md-2"><%=t('activerecord.attributes.book.cover')%></div>
-        <div class="col col-xs-4 col-sm-4 col-md-3"><%=t('activerecord.attributes.book.title')%></div>
+        <div class="col col-xs-4 col-sm-4 col-md-3">
+          <%=t('activerecord.attributes.book.title')%>
+          <%= link_to(books_path(:sort => "title"), method: :get) do %>
+            <% if @direction == "asc" %>
+              <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          <% end %>
+        </div>
         <div class="col col-xs-4 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.authors.name')%></div>
         <div class="col hidden-xs col-sm-2 col-md-2"><%=t('activerecord.attributes.book.publisher.name')%></div>
         <div class="col hidden-xs hidden-sm col-md-1"><%=t('activerecord.attributes.book.edition')%></div>
