@@ -4,7 +4,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.order("created_at").last(10)
+    if params[:search]
+      @books = Book.search(params[:search])
+    else
+      @books = Book.order("created_at").last(10)
+    end
     respond_with(@books)
   end
 

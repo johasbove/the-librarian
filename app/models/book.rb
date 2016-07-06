@@ -34,4 +34,8 @@ class Book < ActiveRecord::Base
   def authors_names
     self.authors.pluck(:name).join(", ")
   end
+
+  def self.search(search)
+      where(["title LIKE ? OR original_title LIKE ?", "%#{search}%", "%#{search}%"])
+  end
 end
