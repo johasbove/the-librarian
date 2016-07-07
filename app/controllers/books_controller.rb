@@ -9,22 +9,30 @@ class BooksController < ApplicationController
     elsif params[:sort] && Book.column_names.include?(params[:sort]) 
       if session[:direction] && session[:direction] == "desc"
         @books = Book.order(params[:sort].to_sym => :desc).page(params[:page]).per(7)
-        session[:direction] = "asc"
-        @direction = session[:direction]
+        if params[:a] == "sorting" && !params[:origin]
+          session[:direction] = "asc"
+          @direction = session[:direction]
+        end
       else
         @books = Book.order(params[:sort].to_sym).page(params[:page]).per(7)
-        session[:direction] = "desc"
-        @direction = session[:direction]
+        if params[:a] == "sorting" && !params[:origin]
+          session[:direction] = "desc"
+          @direction = session[:direction]
+        end
       end
     elsif params[:sort] == "publisher_name"
       if session[:direction] && session[:direction] == "desc"
         @books = Book.joins(:publisher).order('publishers.name DESC').page(params[:page]).per(7)
-        session[:direction] = "asc"
-        @direction = session[:direction]
+        if params[:a] == "sorting" && !params[:origin]
+          session[:direction] = "asc"
+          @direction = session[:direction]
+        end
       else
         @books = Book.joins(:publisher).order('publishers.name').page(params[:page]).per(7)
-        session[:direction] = "desc"
-        @direction = session[:direction]
+        if params[:a] == "sorting" && !params[:origin]
+          session[:direction] = "desc"
+         @direction = session[:direction]
+       end
       end
     else
       @books = Book.order("created_at").page(params[:page]).per(7)

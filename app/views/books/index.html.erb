@@ -18,7 +18,7 @@
         <div class="col col-xs-2 col-sm-2 col-md-2"><%=t('activerecord.attributes.book.cover')%></div>
         <div class="col col-xs-4 col-sm-4 col-md-3">
           <%=t('activerecord.attributes.book.title')%>
-          <%= link_to(books_path(:sort => "title"), method: :get) do %>
+          <%= link_to(books_path(:sort => "title", :a => "sorting"), method: :get) do %>
             <% if @direction == "asc" %>
               <i class="fa fa-sort-down" aria-hidden="true"></i>
             <% else %>
@@ -29,7 +29,7 @@
         <div class="col col-xs-4 col-sm-3 col-md-3"><%=t('activerecord.attributes.book.authors.name')%></div>
         <div class="col hidden-xs col-sm-2 col-md-2">
           <%=t('activerecord.attributes.book.publisher.name')%>
-          <%= link_to(books_path(:sort => "publisher_name"), method: :get) do %>
+          <%= link_to(books_path(:sort => "publisher_name", :a => "sorting"), method: :get) do %>
             <% if @direction == "asc" %>
               <i class="fa fa-sort-down" aria-hidden="true"></i>
             <% else %>
@@ -39,7 +39,7 @@
         </div>
         <div class="col hidden-xs hidden-sm col-md-1">
           <%=t('activerecord.attributes.book.edition')%>
-          <%= link_to(books_path(:sort => "edition"), method: :get) do %>
+          <%= link_to(books_path(:sort => "edition", :a => "sorting"), method: :get) do %>
             <% if @direction == "asc" %>
               <i class="fa fa-sort-down" aria-hidden="true"></i>
             <% else %>
@@ -89,7 +89,7 @@
         </section>
       <% end %>
       <div>
-        <%= paginate @books, :window => 2 %>
+        <%= paginate @books, params: {:origin => "pagination"}, :window => 2 %>
       </div>
       <%= link_to 'Agregar libro', new_book_path, class: 'btn btn-primary' %>
     </div>
