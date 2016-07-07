@@ -16,7 +16,7 @@ class BooksController < ApplicationController
         session[:direction] = "desc"
         @direction = session[:direction]
       end
-    elsif params[:sort] = "publisher_name"
+    elsif params[:sort] == "publisher_name"
       if session[:direction] && session[:direction] == "desc"
         @books = Book.joins(:publisher).order('publishers.name DESC').page(params[:page]).per(7)
         session[:direction] = "asc"
