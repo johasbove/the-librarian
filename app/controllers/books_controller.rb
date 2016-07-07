@@ -4,38 +4,10 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search]
-      @books = Book.search(params[:search]).page(params[:page]).per(7)
-    elsif params[:sort] && Book.column_names.include?(params[:sort]) 
-      if session[:direction] && session[:direction] == "desc"
-        @books = Book.order(params[:sort].to_sym => :desc).page(params[:page]).per(7)
-        if params[:a] == "sorting" && !params[:origin]
-          session[:direction] = "asc"
-          @direction = session[:direction]
-        end
-      else
-        @books = Book.order(params[:sort].to_sym).page(params[:page]).per(7)
-        if params[:a] == "sorting" && !params[:origin]
-          session[:direction] = "desc"
-          @direction = session[:direction]
-        end
-      end
-    elsif params[:sort] == "publisher_name"
-      if session[:direction] && session[:direction] == "desc"
-        @books = Book.joins(:publisher).order('publishers.name DESC').page(params[:page]).per(7)
-        if params[:a] == "sorting" && !params[:origin]
-          session[:direction] = "asc"
-          @direction = session[:direction]
-        end
-      else
-        @books = Book.joins(:publisher).order('publishers.name').page(params[:page]).per(7)
-        if params[:a] == "sorting" && !params[:origin]
-          session[:direction] = "desc"
-         @direction = session[:direction]
-       end
-      end
+    if sort_column == "publisher_name"
+      @books = Book.order("publishers.name" + sort_direction).page(params[:page]).per(7)
     else
-      @books = Book.order("created_at").page(params[:page]).per(7)
+      @books = Book.order(sort_column + " " + sort_direction).page(params[:page]).per(7)
     end
     respond_with(@books)
   end
@@ -67,10 +39,18 @@ class BooksController < ApplicationController
     @book.destroy
     respond_with(@book)
   end
-
+  
   private
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def sort_column
+      Book.column_names.include?(params[:sort_by]) ? params[:sort_by] : "created_at"
+    end
+
+    def sort_direction
+      %w[ASC DESC].include?(params[:sort_direction]) ? params[:sort_direction] : "ASC"
     end
 
     def book_params
